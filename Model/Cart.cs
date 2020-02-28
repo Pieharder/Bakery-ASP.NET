@@ -47,8 +47,8 @@ namespace Bakery.Model
         | [2] See Daily Deals          |
         | [M] Main Menu                |
         ");
-      PrintItems();
 
+      PrintItems();
       //print Menu
       Console.WriteStyled(Menu, styleSheet);
       Console.Write("Enter : ", Color.Green);
@@ -103,21 +103,22 @@ namespace Bakery.Model
 
     public static void PrintItems()
     {
+      int loafCount = 0;
+      int pastryCount = 0;
       //print Bread
-      string itemsWord = "items";
-      if (breadCart.Count == 1)
+      foreach (Bread item in BreadCart)
       {
-        itemsWord = "item";
+        loafCount += item.BreadCount;
       }
 
-      Console.WriteLine($"You have {breadCart.Count} line {itemsWord} of bread.");
+      Console.WriteLine($"You have {loafCount} loafs of bread in your cart.");
       foreach (Bread item in BreadCart)
       {
         Console.WriteLine($"[- [{item.BreadCount}] {item.BreadType} -]");
 
       }
 
-      Console.WriteLine($"You have {pastryCart.Count} pastries.");
+      Console.WriteLine($"You have {pastryCount} pastries.");
       foreach (Pastry item in PastryCart)
       {
         Console.WriteLine($"[- [{item.PastryCount}] {item.PastryType} -]");
