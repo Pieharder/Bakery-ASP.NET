@@ -48,7 +48,6 @@ namespace Bakery.Model
       }
     }
 
-
     public static double GetBreadTotal(double loafCount)
     {
       double result;
@@ -77,8 +76,6 @@ namespace Bakery.Model
 
       return result;
     }
-
-
 
   }
 

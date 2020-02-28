@@ -1,8 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Drawing;
 using Console = Colorful.Console;
-using StyleSheet = Colorful.StyleSheet;
+using Bakery.View;
 
 namespace Bakery.Model
 {
@@ -18,35 +15,7 @@ namespace Bakery.Model
     }
     public static void Menu()
     {
-      Console.Clear();
-      Console.WriteLine(@"
-      =========================================================================================
-      .______      ___           _______..___________..______       __   _______      _______.
-      |   _  \    /   \         /       ||           ||   _  \     |  | |   ____|    /       |
-      |  |_)  |  /  ^  \       |   (----``---|  |----`|  |_)  |    |  | |  |__      |   (----`
-      |   ___/  /  /_\  \       \   \        |  |     |      /     |  | |   __|      \   \    
-      |  |     /  _____  \  .----)   |       |  |     |  |\  \----.|  | |  |____ .----)   |   
-      | _|    /__/     \__\ |_______/        |__|     | _| `._____||__| |_______||_______/    
-     =========================================================================================
-", Color.Cyan);
-      StyleSheet styleSheet = new StyleSheet(Color.Green);
-      styleSheet.AddStyle("1[1-9]*", Color.Red);
-      styleSheet.AddStyle("2[1-9]*", Color.Cyan);
-      styleSheet.AddStyle("3[1-9]*", Color.Yellow);
-      styleSheet.AddStyle("4[1-9]*", Color.Yellow);
-      styleSheet.AddStyle("M[A-Z]*", Color.White);
-
-      //Menu string
-      string Menu = (@"
-        | [1] + Baklava        | 
-        | [2] + Cream Horn     | 
-        | [3] + Croissant      |
-        | [4] + Fig Roll       |
-        | [M]   Main Menu      |
-        ");
-      //print Menu
-      Console.WriteStyled(Menu, styleSheet);
-      Console.Write("Enter : ", Color.Green);
+      PastryMenu.Print();
       string input = Console.ReadLine().ToLower();
 
       switch (input)
@@ -82,25 +51,22 @@ namespace Bakery.Model
 
     public static void AddPastryToCart(string pastryType)
     {
-      Console.WriteLine($"How many {pastryType} would you like");
-      Console.Write("Enter : ");
+
+      PastryMessage.HowMany(pastryType);
       string input = Console.ReadLine();
       int count;
-
       bool success = int.TryParse(input, out count);
       if (success)
       {
         Pastry pastry = new Pastry(pastryType, count);
         // cart.Addpastry(pastry);
         Cart.PastryCart.Add(pastry);
-        Console.WriteLine($"Added {count} {pastryType} to your cart", Color.Green);
-        Console.Write("Hit enter to continue : ");
+        PastryMessage.Confirm(count, pastryType);
         Console.ReadLine();
       }
       else
       {
-        Console.WriteLine("Could not add item to cart");
-        Console.Write("Hit enter to continue : ");
+        PastryMessage.Error();
         Console.ReadLine();
       }
     }

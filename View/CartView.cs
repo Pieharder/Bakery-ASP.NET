@@ -96,8 +96,8 @@ namespace Bakery.View
         }
       }
       Console.WriteLine("          ---------------------------------------");
-      Console.WriteLine($"                Total before discount =  ${Math.Round((Cart.BreadTotal * 5), 2)}", Color.Red);
-      Console.WriteLine($"                Total for Bead ${Math.Round(Cart.GetBreadTotal(Cart.BreadTotal), 2)}");
+      Console.WriteLine($"                Bread before discount =  ${Math.Round((Cart.BreadTotal * 5), 2)}", Color.Red);
+      Console.WriteLine($"                Bead after discout = ${Math.Round(Cart.GetBreadTotal(Cart.BreadTotal), 2)}");
       Console.WriteLine();
       Console.WriteLine("          ---------------------------------------");
       Console.WriteLine("          ---------------------------------------");
@@ -135,11 +135,11 @@ namespace Bakery.View
       }
       Console.WriteLine();
       Console.WriteLine("          ---------------------------------------");
-      Console.WriteLine($"               Total before Discount = ${Math.Round((Cart.PastryTotal * 2), 2)}", Color.Red);
-      Console.WriteLine($"               Total for Pastries ${Math.Round(Cart.GetPastryTotal(Cart.PastryTotal), 2)}", Color.Cyan);
+      Console.WriteLine($"               Pastries before Discount = ${Math.Round((Cart.PastryTotal * 2), 2)}", Color.Red);
+      Console.WriteLine($"               Pastries after discount = ${Math.Round(Cart.GetPastryTotal(Cart.PastryTotal), 2)}", Color.Cyan);
       Console.WriteLine("          =======================================");
       Console.WriteLine();
-      Console.WriteLine($"                Grannd Total ${Math.Round(Cart.GetPastryTotal(Cart.PastryTotal) + Cart.GetBreadTotal(Cart.BreadTotal), 2)}", Color.Red);
+      Console.WriteLine($"                Grand Total ${Math.Round(Cart.GetPastryTotal(Cart.PastryTotal) + Cart.GetBreadTotal(Cart.BreadTotal), 2)}", Color.Red);
 
 
       string input = Console.ReadLine();
@@ -184,8 +184,12 @@ namespace Bakery.View
       }
       Console.WriteLine($"            Total before Discount = ${Math.Round((Cart.PastryTotal * 2), 2)}", Color.Red);
       Console.WriteLine($"            Total after Discount = ${Math.Round(Cart.GetPastryTotal(Cart.PastryTotal), 2)}", Color.Cyan);
+      Console.WriteLine();
+      Console.WriteLine("          -------------- [Total] -------------------", Color.Green);
+      Console.WriteLine($"            Total after Discount = ${Math.Round(Cart.GetPastryTotal(Cart.PastryTotal) + Cart.GetBreadTotal(Cart.BreadTotal), 2)}", Color.Green);
 
     }
+
   }
 
 }

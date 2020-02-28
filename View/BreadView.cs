@@ -63,8 +63,8 @@ namespace Bakery.View
 
     public static void ErrorMessage()
     {
-      Console.WriteLine("Could not add item to cart");
-      Console.Write("Hit enter to continue : ");
+      Console.WriteLine("      Could not add item to cart");
+      Console.Write("      Continue : ");
     }
   }
 }
