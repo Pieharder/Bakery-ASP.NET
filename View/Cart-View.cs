@@ -36,7 +36,7 @@ namespace Bakery.View
         | [M] Main Menu                |
         ");
 
-      CartCheckout.PrintItems();
+      PrintItems.Print();
       //print Menu
       Console.WriteStyled(Menu, styleSheet);
       Console.Write("Enter : ", Color.Green);
@@ -74,7 +74,7 @@ namespace Bakery.View
           {
             if (thirdFree == 3)
             {
-              Console.WriteLine($"                {item.BreadType} -- FREE", Color.Red);
+              Console.WriteLine($"                {item.BreadType} --  FREE", Color.Red);
               thirdFree = 1;
             }
             else
@@ -86,7 +86,7 @@ namespace Bakery.View
         }
         if (thirdFree == 3)
         {
-          Console.WriteLine($"                {item.BreadType} -- FREE", Color.Red);
+          Console.WriteLine($"                {item.BreadType} --  FREE", Color.Red);
           thirdFree = 0;
         }
         else
@@ -96,6 +96,7 @@ namespace Bakery.View
         }
       }
       Console.WriteLine("          ---------------------------------------");
+      Console.WriteLine($"                Total before discount =  ${Math.Round((Cart.BreadTotal * 5), 2)}", Color.Red);
       Console.WriteLine($"                Total for Bead ${Math.Round(Cart.GetBreadTotal(Cart.BreadTotal), 2)}");
       Console.WriteLine();
       Console.WriteLine("          ---------------------------------------");
@@ -111,7 +112,7 @@ namespace Bakery.View
           {
             if (thirdHalfOff == 3)
             {
-              Console.WriteLine($"                {item.PastryType} -- $1", Color.Red);
+              Console.WriteLine($"                {item.PastryType} --  $1", Color.Red);
               thirdHalfOff = 1;
             }
             else
@@ -123,7 +124,7 @@ namespace Bakery.View
         }
         if (thirdHalfOff == 3)
         {
-          Console.WriteLine($"                {item.PastryType} -- $1", Color.Red);
+          Console.WriteLine($"                {item.PastryType} --  $1", Color.Red);
           thirdHalfOff = 0;
         }
         else
@@ -134,7 +135,8 @@ namespace Bakery.View
       }
       Console.WriteLine();
       Console.WriteLine("          ---------------------------------------");
-      Console.WriteLine($"                Total for Pastries ${Math.Round(Cart.GetPastryTotal(Cart.PastryTotal), 2)}", Color.Cyan);
+      Console.WriteLine($"               Total before Discount = ${Math.Round((Cart.PastryTotal * 2), 2)}", Color.Red);
+      Console.WriteLine($"               Total for Pastries ${Math.Round(Cart.GetPastryTotal(Cart.PastryTotal), 2)}", Color.Cyan);
       Console.WriteLine("          =======================================");
       Console.WriteLine();
       Console.WriteLine($"                Grannd Total ${Math.Round(Cart.GetPastryTotal(Cart.PastryTotal) + Cart.GetBreadTotal(Cart.BreadTotal), 2)}", Color.Red);
@@ -143,10 +145,14 @@ namespace Bakery.View
       string input = Console.ReadLine();
     }
 
-    public static void PrintItems()
+
+  }
+
+  class PrintItems
+  {
+
+    public static void Print()
     {
-
-
       //get line item counts
       foreach (Bread item in Cart.BreadCart)
       {
@@ -157,23 +163,27 @@ namespace Bakery.View
         Cart.PastryTotal += item.PastryCount;
       }
 
+      Console.WriteLine("          -------------- [BREAD] -------------------", Color.Red);
       //print bread
-      Console.WriteLine($"You have {Cart.BreadTotal} loafs of bread in your cart.");
+      Console.WriteLine($"           Amount of loafs = {Cart.BreadTotal}.");
       foreach (Bread item in Cart.BreadCart)
       {
-        Console.WriteLine($"[- [{item.BreadCount}] {item.BreadType} -]");
+        Console.WriteLine($"           [ (#{item.BreadCount}) {item.BreadType} ]");
 
       }
-      Console.WriteLine($"Your total with 'Buy one get one free' is ${Cart.GetBreadTotal(Cart.BreadTotal)}");
+      Console.WriteLine($"           Total before discount =  ${Math.Round((Cart.BreadTotal * 5), 2)}", Color.Red);
+      Console.WriteLine($"           Total after discount =  ${Math.Round(Cart.GetBreadTotal(Cart.BreadTotal), 2)}", Color.Green);
 
       //print pastry
-      Console.WriteLine($"You have {Cart.PastryTotal} pastries in your cart.");
+      Console.WriteLine("          -------------- [Pastries] -------------------", Color.Cyan);
+      Console.WriteLine($"            Amont of Pastries = {Cart.PastryTotal}.");
       foreach (Pastry item in Cart.PastryCart)
       {
-        Console.WriteLine($"[- [{item.PastryCount}] {item.PastryType} -]");
+        Console.WriteLine($"            [ (#{item.PastryCount}) {item.PastryType} ]");
 
       }
-      Console.WriteLine($"Your total with 'Buy one get one free' is ${Cart.GetPastryTotal(Cart.PastryTotal)}");
+      Console.WriteLine($"            Total before Discount = ${Math.Round((Cart.PastryTotal * 2), 2)}", Color.Red);
+      Console.WriteLine($"            Total after Discount = ${Math.Round(Cart.GetPastryTotal(Cart.PastryTotal), 2)}", Color.Cyan);
 
     }
   }
