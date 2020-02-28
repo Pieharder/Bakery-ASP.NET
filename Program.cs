@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Drawing;
 using Console = Colorful.Console;
 using StyleSheet = Colorful.StyleSheet;
+using Bakery.Model;
 
 namespace Bakery
 {
   class Program
   {
-    List<int> cart = new List<int>(5);
-    static void Main(string[] args)
+
+    static void Main()
     {
             
             Console.WriteLine(@"
@@ -25,16 +26,16 @@ namespace Bakery
 ======================================================================
             ", Color.BlueViolet);
 
-        Console.WriteLine(@"---------------------  [MAIN MENU] -----------------------");
-        Console.WriteLine(@"        Bread: Buy 2, get 1 free. A single loaf costs $5.");
-        Console.WriteLine(@"        Pastry: Buy 1 for $2 or 3 for $5.");
-        Console.WriteLine(@"        Daily Special: Two loafs of wheat for $5.");
+          Console.WriteLine(@"---------------------  [MAIN MENU] -----------------------");
+          Console.WriteLine(@"        Bread: Buy 2, get 1 free. A single loaf costs $5.");
+          Console.WriteLine(@"        Pastry: Buy 1 for $2 or 3 for $5.");
+          Console.WriteLine(@"        Daily Special: Two loafs of wheat for $5.");
 
-        StyleSheet styleSheet = new StyleSheet(Color.Green);
-        styleSheet.AddStyle("B[A-Z]*", Color.Red);
-        styleSheet.AddStyle("P[A-Z]*", Color.Cyan);
-        styleSheet.AddStyle("C[A-Z]*", Color.Yellow);
-        styleSheet.AddStyle("D[A-Z]*", Color.White);
+          StyleSheet styleSheet = new StyleSheet(Color.Green);
+          styleSheet.AddStyle("B[A-Z]*", Color.Red);
+          styleSheet.AddStyle("P[A-Z]*", Color.Cyan);
+          styleSheet.AddStyle("C[A-Z]*", Color.Yellow);
+          styleSheet.AddStyle("D[A-Z]*", Color.White);
 
         //Menu string
         string Menu = (@"
@@ -42,33 +43,51 @@ namespace Bakery
         | [P] for pastry menu          | 
         | [C] to see your cart         |
         | [D] to buy the daily special |
+        | [Q] to quit Program          |
         ");
-        //print Menu
-        Console.WriteStyled(Menu, styleSheet);
-        Console.Write("Enter : ", Color.Green);
-        string input = Console.ReadLine().ToLower();
+          //print Menu
+          Console.WriteStyled(Menu, styleSheet);
+          Console.Write("Enter : ", Color.Green);
+          string input = Console.ReadLine().ToLower();
 
-        switch(input)
-        {
-          case "b":
-          break;
+          switch(input)
+          {
+            case "b":
+              Bread.Menu();
+              Main();
+              break;
 
-          case "p":
-          break;
+            case "p":
+              Pasty.Menu();
+              Main();
+              break;
 
-          case "c":
-          break;
+            case "c":
+              cart.Menu();
+              Main();
+              break;
 
-          case "d":
-          break;
+            case "d":
+              cart.AddDailyDeal();
+              Main();
+              break;
 
-          default:
-          break;
+            case "q":
+              break;
+
+            default:
+              TryAgain();
+              Main();
+              break;
+          }
         }
 
-
-
-
+        static void TryAgain()
+        { 
+          Console.Clear();
+          Console.WriteLine("Sorry, that is not an option.");
+          
         }
+
     }
 }
