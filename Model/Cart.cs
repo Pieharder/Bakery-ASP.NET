@@ -8,7 +8,13 @@ namespace Bakery.Model
 {
   class cart
   {
-    List<int> cartList = new List<int>(5);
+    private static List<Bread> breadCart = new List<Bread>(5);
+    public static List<Bread> BreadCart
+    {
+      get { return BreadCart; }
+      set { breadCart = value; }
+    }
+
 
     public static void Menu()
     {
