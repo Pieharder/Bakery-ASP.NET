@@ -40,15 +40,15 @@ namespace Bakery.Model
       styleSheet.AddStyle("2[1-9]*", Color.Cyan);
       styleSheet.AddStyle("3[1-9]*", Color.Yellow);
       styleSheet.AddStyle("4[1-9]*", Color.Yellow);
-      styleSheet.AddStyle("m[A-Z]*", Color.White);
+      styleSheet.AddStyle("M[A-Z]*", Color.White);
 
       //Menu string
       string Menu = (@"
-        | [1] +1 Wheat bread loaf      | 
-        | [2] +1 White bread loaf      | 
-        | [3] +1 9 Grain bread loaf    |
-        | [4] +1 Rye bread loaf        |
-        | [M] Back to Main Menu        |
+        | [1] + Wheat bread loaf      | 
+        | [2] + White bread loaf      | 
+        | [3] + 9 Grain bread loaf    |
+        | [4] + Rye bread loaf        |
+        | [M]   Main Menu             |
         ");
       //print Menu
       Console.WriteStyled(Menu, styleSheet);

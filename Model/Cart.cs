@@ -14,8 +14,8 @@ namespace Bakery.Model
       get { return breadCart; }
       set { breadCart = value; }
     }
-    private static List<Bread> pastryCart = new List<Bread>(5);
-    public static List<Bread> PastryCart
+    private static List<Pastry> pastryCart = new List<Pastry>(5);
+    public static List<Pastry> PastryCart
     {
       get { return pastryCart; }
       set { pastryCart = value; }
@@ -39,13 +39,13 @@ namespace Bakery.Model
       StyleSheet styleSheet = new StyleSheet(Color.Green);
       styleSheet.AddStyle("1[1-9]*", Color.Red);
       styleSheet.AddStyle("2[1-9]*", Color.Cyan);
-      styleSheet.AddStyle("m[A-Z]*", Color.White);
+      styleSheet.AddStyle("M[A-Z]", Color.White);
 
       //Menu string
       string Menu = (@"
         | [1] Checkout                 | 
         | [2] See Daily Deals          |
-        | [M] Back to Main Menu        |
+        | [M] Main Menu                |
         ");
       PrintItems();
 
@@ -103,6 +103,7 @@ namespace Bakery.Model
 
     public static void PrintItems()
     {
+      //print Bread
       string itemsWord = "items";
       if (breadCart.Count == 1)
       {
@@ -112,9 +113,18 @@ namespace Bakery.Model
       Console.WriteLine($"You have {breadCart.Count} line {itemsWord} of bread.");
       foreach (Bread item in BreadCart)
       {
-        Console.WriteLine($"[- {item.BreadCount} {item.BreadType} -]");
+        Console.WriteLine($"[- [{item.BreadCount}] {item.BreadType} -]");
 
       }
+
+      Console.WriteLine($"You have {pastryCart.Count} pastries.");
+      foreach (Pastry item in PastryCart)
+      {
+        Console.WriteLine($"[- [{item.PastryCount}] {item.PastryType} -]");
+
+      }
+
+
     }
 
   }
