@@ -27,12 +27,14 @@ namespace Bakery.Model
       Console.Clear();
       Console.WriteLine(@"
 
-  ______     ___      .______     .___________.
- /      |   /   \     |   _  \    |           |
-|  ,----'  /  ^  \    |  |_)  |   `---|  |----`
-|  |      /  /_\  \   |      /        |  |     
-|  `----./  _____  \  |  |\  \----.   |  |     
- \______/__/     \__\ | _| `._____|   |__|    
+                          =================================================
+                            ______      ___      .______     .___________.
+                           /      |    /   \     |   _  \    |           |
+                          |  ,----'   /  ^  \    |  |_)  |   `---|  |----`
+                          |  |       /  /_\  \   |      /        |  |     
+                          |  `----. /  _____  \  |  |\  \----.   |  |     
+                           \______|/__/     \__\ | _| `._____|   |__|     
+                         ================================================= 
                                                                           
       ", Color.Red);
 
@@ -58,6 +60,7 @@ namespace Bakery.Model
       switch (input)
       {
         case "1":
+          CheckOut();
           Cart.Menu();
           break;
 
@@ -80,20 +83,21 @@ namespace Bakery.Model
       Console.Clear();
       Console.WriteLine(@"
 
- _______       ___       __   __      ____    ____ 
-|       \     /   \     |  | |  |     \   \  /   / 
-|  .--.  |   /  ^  \    |  | |  |      \   \/   /  
-|  |  |  |  /  /_\  \   |  | |  |       \_    _/   
-|  '--'  | /  _____  \  |  | |  `----.    |  |     
-|_______/ /__/     \__\ |__| |_______|    |__|     
-                                                   
- _______   _______     ___       __          _______.
-|       \ |   ____|   /   \     |  |        /       |
-|  .--.  ||  |__     /  ^  \    |  |       |   (----`
-|  |  |  ||   __|   /  /_\  \   |  |        \   \    
-|  '--'  ||  |____ /  _____  \  |  `----.----)   |   
-|_______/ |_______/__/     \__\ |_______|_______/    
-                                                                                                              
+                      ========================================================
+                         _______       ___       __   __      ____    ____ 
+                        |       \     /   \     |  | |  |     \   \  /   / 
+                        |  .--.  |   /  ^  \    |  | |  |      \   \/   /  
+                        |  |  |  |  /  /_\  \   |  | |  |       \_    _/   
+                        |  '--'  | /  _____  \  |  | |  `----.    |  |     
+                        |_______/ /__/     \__\ |__| |_______|    |__|     
+                                                                           
+                       _______   _______      ___       __           _______.
+                      |       \ |   ____|    /   \     |  |         /       |
+                      |  .--.  ||  |__      /  ^  \    |  |        |   (----`
+                      |  |  |  ||   __|    /  /_\  \   |  |         \   \    
+                      |  '--'  ||  |____  /  _____  \  |  `----..----)   |   
+                      |_______/ |_______|/__/     \__\ |_______||_______/    
+                    ===========================================================                                                                                      
       ", Color.Red);
       Console.WriteLine("Daily deal");
       Console.Write("Enter : ");
@@ -105,12 +109,18 @@ namespace Bakery.Model
     {
       int loafCount = 0;
       int pastryCount = 0;
-      //print Bread
+
+      //get line item counts
       foreach (Bread item in BreadCart)
       {
         loafCount += item.BreadCount;
       }
+      foreach (Pastry item in PastryCart)
+      {
+        pastryCount += item.PastryCount;
+      }
 
+      //print bread
       Console.WriteLine($"You have {loafCount} loafs of bread in your cart.");
       foreach (Bread item in BreadCart)
       {
@@ -118,7 +128,8 @@ namespace Bakery.Model
 
       }
 
-      Console.WriteLine($"You have {pastryCount} pastries.");
+      //print pastry
+      Console.WriteLine($"You have {pastryCount} pastries in your cart.");
       foreach (Pastry item in PastryCart)
       {
         Console.WriteLine($"[- [{item.PastryCount}] {item.PastryType} -]");
@@ -126,6 +137,22 @@ namespace Bakery.Model
       }
 
 
+    }
+
+    public static void CheckOut()
+    {
+      Console.Clear();
+      Console.WriteLine(@"
+         ===================================================================================
+           ______  __    __   _______   ______  __  ___   ______    __    __  .___________.
+          /      ||  |  |  | |   ____| /      ||  |/  /  /  __  \  |  |  |  | |           |
+         |  ,----'|  |__|  | |  |__   |  ,----'|  '  /  |  |  |  | |  |  |  | `---|  |----`
+         |  |     |   __   | |   __|  |  |     |    <   |  |  |  | |  |  |  |     |  |     
+         |  `----.|  |  |  | |  |____ |  `----.|  .  \  |  `--'  | |  `--'  |     |  |     
+          \______||__|  |__| |_______| \______||__|\__\  \______/   \______/      |__|     
+        ====================================================================================                                                                                     
+      ", Color.Green);
+      string input = Console.ReadLine();
     }
 
   }
