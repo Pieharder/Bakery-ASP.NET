@@ -14,11 +14,12 @@ namespace Bakery.Model
       get { return breadCart; }
       set { breadCart = value; }
     }
-
-    // public static void AddBread(Bread bread)
-    // {
-    //   breadCart.Add(bread);
-    // }
+    private static List<Bread> pastryCart = new List<Bread>(5);
+    public static List<Bread> PastryCart
+    {
+      get { return pastryCart; }
+      set { pastryCart = value; }
+    }
 
 
     public static void Menu()

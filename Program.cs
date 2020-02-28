@@ -58,7 +58,7 @@ namespace Bakery
           break;
 
         case "p":
-          Pasty.Menu();
+          Pastry.Menu();
           Main();
           break;
 
