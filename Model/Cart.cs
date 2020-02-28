@@ -1,8 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Drawing;
-using Console = Colorful.Console;
-using StyleSheet = Colorful.StyleSheet;
 using Bakery.View;
 
 
@@ -52,41 +48,6 @@ namespace Bakery.Model
       }
     }
 
-
-    // public static void PrintItems()
-    // {
-
-
-    //   //get line item counts
-    //   foreach (Bread item in BreadCart)
-    //   {
-    //     BreadTotal += item.BreadCount;
-    //   }
-    //   foreach (Pastry item in PastryCart)
-    //   {
-    //     PastryTotal += item.PastryCount;
-    //   }
-
-    //   //print bread
-    //   Console.WriteLine($"You have {BreadTotal} loafs of bread in your cart.");
-    //   foreach (Bread item in BreadCart)
-    //   {
-    //     Console.WriteLine($"[- [{item.BreadCount}] {item.BreadType} -]");
-
-    //   }
-    //   Console.WriteLine($"Your total with 'Buy one get one free' is ${GetBreadTotal(BreadTotal)}");
-
-    //   //print pastry
-    //   Console.WriteLine($"You have {PastryTotal} pastries in your cart.");
-    //   foreach (Pastry item in PastryCart)
-    //   {
-    //     Console.WriteLine($"[- [{item.PastryCount}] {item.PastryType} -]");
-
-    //   }
-    //   Console.WriteLine($"Your total with 'Buy one get one free' is ${GetPastryTotal(PastryTotal)}");
-
-
-    // }
 
     public static double GetBreadTotal(double loafCount)
     {
