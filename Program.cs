@@ -12,8 +12,8 @@ namespace Bakery
 
     static void Main()
     {
-            
-            Console.WriteLine(@"
+      Console.Clear();
+      Console.WriteLine(@"
 ===================================================================
   _____ _                    _       ____        _                   
  |  __ (_)                  ( )     |  _ \      | |                  
@@ -26,68 +26,68 @@ namespace Bakery
 ======================================================================
             ", Color.BlueViolet);
 
-          Console.WriteLine(@"---------------------  [MAIN MENU] -----------------------");
-          Console.WriteLine(@"        Bread: Buy 2, get 1 free. A single loaf costs $5.");
-          Console.WriteLine(@"        Pastry: Buy 1 for $2 or 3 for $5.");
-          Console.WriteLine(@"        Daily Special: Two loafs of wheat for $5.");
+      Console.WriteLine(@"---------------------  [MAIN MENU] -----------------------");
+      Console.WriteLine(@"        Bread: Buy 2, get 1 free. A single loaf costs $5.");
+      Console.WriteLine(@"        Pastry: Buy 1 for $2 or 3 for $5.");
+      Console.WriteLine(@"        Daily Special: Two loafs of wheat for $5.");
 
-          StyleSheet styleSheet = new StyleSheet(Color.Green);
-          styleSheet.AddStyle("B[A-Z]*", Color.Red);
-          styleSheet.AddStyle("P[A-Z]*", Color.Cyan);
-          styleSheet.AddStyle("C[A-Z]*", Color.Yellow);
-          styleSheet.AddStyle("D[A-Z]*", Color.White);
+      StyleSheet styleSheet = new StyleSheet(Color.Green);
+      styleSheet.AddStyle("B[A-Z]*", Color.Red);
+      styleSheet.AddStyle("P[A-Z]*", Color.Cyan);
+      styleSheet.AddStyle("C[A-Z]*", Color.Yellow);
+      styleSheet.AddStyle("D[A-Z]*", Color.White);
 
-        //Menu string
-        string Menu = (@"
+      //Menu string
+      string Menu = (@"
         | [B] for bread menu           | 
         | [P] for pastry menu          | 
         | [C] to see your cart         |
         | [D] to buy the daily special |
         | [Q] to quit Program          |
         ");
-          //print Menu
-          Console.WriteStyled(Menu, styleSheet);
-          Console.Write("Enter : ", Color.Green);
-          string input = Console.ReadLine().ToLower();
+      //print Menu
+      Console.WriteStyled(Menu, styleSheet);
+      Console.Write("Enter : ", Color.Green);
+      string input = Console.ReadLine().ToLower();
 
-          switch(input)
-          {
-            case "b":
-              Bread.Menu();
-              Main();
-              break;
+      switch (input)
+      {
+        case "b":
+          Bread.Menu();
+          Main();
+          break;
 
-            case "p":
-              Pasty.Menu();
-              Main();
-              break;
+        case "p":
+          Pasty.Menu();
+          Main();
+          break;
 
-            case "c":
-              cart.Menu();
-              Main();
-              break;
+        case "c":
+          Cart.Menu();
+          Main();
+          break;
 
-            case "d":
-              cart.AddDailyDeal();
-              Main();
-              break;
+        case "d":
+          Cart.AddDailyDeal();
+          Main();
+          break;
 
-            case "q":
-              break;
+        case "q":
+          break;
 
-            default:
-              TryAgain();
-              Main();
-              break;
-          }
-        }
+        default:
+          TryAgain();
+          Main();
+          break;
+      }
+    }
 
-        static void TryAgain()
-        { 
-          Console.Clear();
-          Console.WriteLine("Sorry, that is not an option.");
-          
-        }
+    static void TryAgain()
+    {
+      Console.Clear();
+      Console.WriteLine("Sorry, that is not an option.");
 
     }
+
+  }
 }
