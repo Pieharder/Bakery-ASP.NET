@@ -30,7 +30,6 @@ namespace Bakery
       Console.WriteLine(@"---------------------  [MAIN MENU] -----------------------");
       Console.WriteLine(@"        Bread: Buy 2, get 1 free. A single loaf costs $5.");
       Console.WriteLine(@"        Pastry: Buy 1 for $2 or 3 for $5.");
-      Console.WriteLine(@"        Daily Special: Two loafs of wheat for $5.");
 
       StyleSheet styleSheet = new StyleSheet(Color.Green);
       styleSheet.AddStyle("B[A-Z]*", Color.Red);
@@ -43,7 +42,6 @@ namespace Bakery
         | [B] for bread menu           | 
         | [P] for pastry menu          | 
         | [C] to see your cart         |
-        | [D] to buy the daily special |
         | [Q] to quit Program          |
         ");
       //print Menu
@@ -65,11 +63,6 @@ namespace Bakery
 
         case "c":
           Cart.Menu();
-          Main();
-          break;
-
-        case "d":
-          DailyDeal.Print();
           Main();
           break;
 

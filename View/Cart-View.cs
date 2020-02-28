@@ -33,11 +33,10 @@ namespace Bakery.View
       //Menu string
       string Menu = (@"
         | [1] Checkout                 | 
-        | [2] See Daily Deals          |
         | [M] Main Menu                |
         ");
 
-      Cart.PrintItems();
+      CartCheckout.PrintItems();
       //print Menu
       Console.WriteStyled(Menu, styleSheet);
       Console.Write("Enter : ", Color.Green);
@@ -64,37 +63,118 @@ namespace Bakery.View
           \______||__|  |__| |_______| \______||__|\__\  \______/   \______/      |__|     
         ====================================================================================                                                                                     
       ", Color.Green);
-      string input = Console.ReadLine();
+      Console.WriteLine($"                Amount of Bread Loafs {Cart.BreadTotal}");
+      Console.WriteLine("          ---------------------------------------");
+      int thirdFree = 1;
+      foreach (Bread item in Cart.BreadCart)
+      {
+        if (item.BreadCount > 1)
+        {
+          for (int i = 0; i < item.BreadCount; i++)
+          {
+            if (thirdFree == 3)
+            {
+              Console.WriteLine($"                {item.BreadType} -- FREE", Color.Red);
+              thirdFree = 1;
+            }
+            else
+            {
+              Console.WriteLine($"                {item.BreadType} --  $5");
+              thirdFree++;
+            }
+          }
+        }
+        if (thirdFree == 3)
+        {
+          Console.WriteLine($"                {item.BreadType} -- FREE", Color.Red);
+          thirdFree = 0;
+        }
+        else
+        {
+          Console.WriteLine($"                {item.BreadType} --  $5");
+          thirdFree++;
+        }
+      }
+      Console.WriteLine("          ---------------------------------------");
+      Console.WriteLine($"                Total for Bead ${Math.Round(Cart.GetBreadTotal(Cart.BreadTotal), 2)}");
+      Console.WriteLine();
+      Console.WriteLine("          ---------------------------------------");
+      Console.WriteLine("          ---------------------------------------");
+      Console.WriteLine($"                Amount of Pastries {Cart.PastryTotal}", Color.Cyan);
+      Console.WriteLine("          ---------------------------------------");
+      int thirdHalfOff = 1;
+      foreach (Pastry item in Cart.PastryCart)
+      {
+        if (item.PastryCount > 1)
+        {
+          for (int i = 0; i < item.PastryCount; i++)
+          {
+            if (thirdHalfOff == 3)
+            {
+              Console.WriteLine($"                {item.PastryType} -- $1", Color.Red);
+              thirdHalfOff = 1;
+            }
+            else
+            {
+              Console.WriteLine($"                {item.PastryType} --  $2", Color.Cyan);
+              thirdHalfOff++;
+            }
+          }
+        }
+        if (thirdHalfOff == 3)
+        {
+          Console.WriteLine($"                {item.PastryType} -- $1", Color.Red);
+          thirdHalfOff = 0;
+        }
+        else
+        {
+          Console.WriteLine($"                {item.PastryType} --  $2", Color.Cyan);
+          thirdHalfOff++;
+        }
+      }
+      Console.WriteLine();
+      Console.WriteLine("          ---------------------------------------");
+      Console.WriteLine($"                Total for Pastries ${Math.Round(Cart.GetPastryTotal(Cart.PastryTotal), 2)}", Color.Cyan);
+      Console.WriteLine("          =======================================");
+      Console.WriteLine();
+      Console.WriteLine($"                Grannd Total ${Math.Round(Cart.GetPastryTotal(Cart.PastryTotal) + Cart.GetBreadTotal(Cart.BreadTotal), 2)}", Color.Red);
 
+
+      string input = Console.ReadLine();
     }
-  }
 
-  class DailyDeal
-  {
-    public static void Print()
+    public static void PrintItems()
     {
-      Console.Clear();
-      Console.WriteLine(@"
 
-                      ========================================================
-                         _______       ___       __   __      ____    ____ 
-                        |       \     /   \     |  | |  |     \   \  /   / 
-                        |  .--.  |   /  ^  \    |  | |  |      \   \/   /  
-                        |  |  |  |  /  /_\  \   |  | |  |       \_    _/   
-                        |  '--'  | /  _____  \  |  | |  `----.    |  |     
-                        |_______/ /__/     \__\ |__| |_______|    |__|     
-                                                                           
-                       _______   _______      ___       __           _______.
-                      |       \ |   ____|    /   \     |  |         /       |
-                      |  .--.  ||  |__      /  ^  \    |  |        |   (----`
-                      |  |  |  ||   __|    /  /_\  \   |  |         \   \    
-                      |  '--'  ||  |____  /  _____  \  |  `----..----)   |   
-                      |_______/ |_______|/__/     \__\ |_______||_______/    
-                    ===========================================================                                                                                      
-      ", Color.Red);
-      Console.WriteLine("Daily deal");
-      Console.Write("Enter : ");
-      string input = Console.ReadLine();
+
+      //get line item counts
+      foreach (Bread item in Cart.BreadCart)
+      {
+        Cart.BreadTotal += item.BreadCount;
+      }
+      foreach (Pastry item in Cart.PastryCart)
+      {
+        Cart.PastryTotal += item.PastryCount;
+      }
+
+      //print bread
+      Console.WriteLine($"You have {Cart.BreadTotal} loafs of bread in your cart.");
+      foreach (Bread item in Cart.BreadCart)
+      {
+        Console.WriteLine($"[- [{item.BreadCount}] {item.BreadType} -]");
+
+      }
+      Console.WriteLine($"Your total with 'Buy one get one free' is ${Cart.GetBreadTotal(Cart.BreadTotal)}");
+
+      //print pastry
+      Console.WriteLine($"You have {Cart.PastryTotal} pastries in your cart.");
+      foreach (Pastry item in Cart.PastryCart)
+      {
+        Console.WriteLine($"[- [{item.PastryCount}] {item.PastryType} -]");
+
+      }
+      Console.WriteLine($"Your total with 'Buy one get one free' is ${Cart.GetPastryTotal(Cart.PastryTotal)}");
+
     }
   }
 
