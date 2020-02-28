@@ -4,6 +4,7 @@ using System.Drawing;
 using Console = Colorful.Console;
 using StyleSheet = Colorful.StyleSheet;
 using Bakery.Model;
+using Bakery.View;
 
 namespace Bakery
 {
@@ -68,7 +69,7 @@ namespace Bakery
           break;
 
         case "d":
-          Cart.AddDailyDeal();
+          DailyDeal.Print();
           Main();
           break;
 
