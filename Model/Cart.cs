@@ -8,21 +8,21 @@ namespace Bakery.Model
   {
     /////////////////////////////////////////
     ///////////   Bread Fields    ///////////
-    private static List<Bread> breadCart = new List<Bread>(5);
+    private static List<Bread> _breadCart = new List<Bread>(5);
     public static List<Bread> BreadCart
     {
-      get { return breadCart; }
-      set { breadCart = value; }
+      get { return _breadCart; }
+      set { _breadCart = value; }
     }
     public static double BreadTotal { get; set; }
 
     /////////////////////////////////////////
     ///////////   Pastry Fields    ///////////
-    private static List<Pastry> pastryCart = new List<Pastry>(5);
+    private static List<Pastry> _pastryCart = new List<Pastry>(5);
     public static List<Pastry> PastryCart
     {
-      get { return pastryCart; }
-      set { pastryCart = value; }
+      get { return _pastryCart; }
+      set { _pastryCart = value; }
     }
     public static double PastryTotal { get; set; }
 
