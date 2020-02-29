@@ -11,9 +11,10 @@ This is a simple C# sharp console application. It was built as a Friday independ
 ## Setup/Installation Requirements
 
 _Make sure you have [git version control](https://git-scm.com/downloads) installed on your computer._
+_Make sure you have [.Net Core 2.2 installed](https://dotnet.microsoft.com/download/dotnet-core/2.2) installed on your computer._
 
-1. find the green 'Clone or Download' button and copy the link
-2. open terminal and type...
+1. Find the green 'Clone or Download' button and copy the link
+2. Open terminal and type...
 
 **Windows**
 ```sh 
@@ -25,16 +26,24 @@ cd desktop
  cd ~/Desktop
  ```
 
- 3. in terminal type '_git clone {link to repository}_ '
+ 3. In terminal type '_git clone {link to repository}_ '
 
 ```sh
-git clone https://github.com/dustatron/boilerplate-simple-website.git
+git clone https://github.com/dustatron/Csharp-Bakery-Console-app.git
 ```
 
-4. navigate to the new folder that was created on your desk
-5. select index.html
-6. right click on the file and select _'open with'_
-7. select your browser
+4. Navigate to the new folder that was created from your terminal.
+```sh
+cd Bakery
+```
+5. Install dependencies by typing:
+```sh
+dotnet restore
+```
+6. Run the program by typing:
+```sh
+dotnet run
+```
 8. enjoy this project
 
 
@@ -44,18 +53,19 @@ git clone https://github.com/dustatron/boilerplate-simple-website.git
 Behavoir | Input | Output
 :---------|:------:|:------:
 The program shows deals on bread and pastry when opened | Open Program | display deals |
-The program shows menus to allow a user to select add bread | 'b' | show bread list |
-The program shows list of bread loafs and allows a user to add loaf bread to their cart | '1' | item added to cart |
+The program shows menus to allow a user to select bread menu | 'b' | show bread menu |
+The program shows a list of bread loaves and allows a user to add a loaf of bread to their cart | '1' | item added to cart |
 The program will allow a user to select the same item again or another item | '2' or '1' | item added to cart |
 The program will allow a user to return to main menu from the bread list | 'm' | show main menu |
-The program will allow a user to select add pastry | 'p' | show pastry list |
+The program will allow a user to select pastry menu | 'p' | show pastry list |
 The program will allow a user to select a pastry option and add it to their cart | '1' | item added to cart |
-The program will allow a user to select same item or another and add it to cart | '1' or '2' | item added to cart |
+The program will allow a user to select same item or another and add it to their cart | '1' or '2' | item added to cart |
 The program will allow a user to move to main menu from pastry menu | 'm' | display main menu |
 The program will allow a user to see all items in cart and total cost | 'c' | display items in cart and total |
-The program will allow a buy two get one free deal | three bread loafs in cart | charge for only 2 |
-The program will allow a user navigate to main menu | 'm' | display main menu |
-The program will allow a user to buy the daily deal from main menu | select todays deal | show cart with the deal |
+The program will allow a user to select checkout and see a full list of items in cart | '1' | show itemized list |
+The program will allow a 'buy two get one free' deal | three bread loaves in cart | charge for only 2 |
+The program will allow a user navigate to main menu from cart menu | 'm' | display main menu |
+
 
 ## Support 
 
