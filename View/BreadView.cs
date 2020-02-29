@@ -50,14 +50,14 @@ namespace Bakery.View
     public static void HowMany(string breadName)
     {
       Console.WriteLine("      ====================================================", Color.Pink);
-      Console.WriteLine($"      How many loafs of {breadName} bread would you like", Color.Green);
+      Console.WriteLine($"      How many loaves of {breadName} bread would you like", Color.Green);
       Console.Write("      Enter : ");
     }
 
     public static void Confirm(int count, string breadName)
     {
       Console.WriteLine();
-      Console.WriteLine($"      Added {count} loafs of {breadName} bread to your cart", Color.Green);
+      Console.WriteLine($"      Added {count} loaves of {breadName} bread to your cart", Color.Green);
       Console.Write("      Continue : ");
     }
 
