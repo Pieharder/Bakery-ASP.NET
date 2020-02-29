@@ -56,8 +56,13 @@ namespace Bakery.View
 
     public static void Confirm(int count, string breadName)
     {
+      string loaves = "loaves";
+      if (count == 1)
+      {
+        loaves = "loaf";
+      }
       Console.WriteLine();
-      Console.WriteLine($"      Added {count} loaves of {breadName} bread to your cart", Color.Green);
+      Console.WriteLine($"      Added {count} {loaves} of {breadName} bread to your cart", Color.Green);
       Console.Write("      Continue : ");
     }
 

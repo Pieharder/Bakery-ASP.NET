@@ -54,8 +54,13 @@ namespace Bakery.View
 
     public static void Confirm(int count, string pastryType)
     {
+      string s = "s";
+      if (count == 1)
+      {
+        s = "";
+      }
       Console.WriteLine();
-      Console.WriteLine($"      Added {count} {pastryType} to your cart", Color.Green);
+      Console.WriteLine($"      Added {count} {pastryType}{s} to your cart", Color.Green);
       Console.Write("      Continue : ");
     }
 
