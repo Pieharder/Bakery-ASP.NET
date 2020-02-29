@@ -41,7 +41,8 @@ namespace Bakery.View
         ");
       //print Menu
       Console.WriteStyled(Menu, styleSheet);
-      Console.Write("Enter : ", Color.Green);
+      Console.WriteLine();
+      Console.Write("        Enter : ", Color.Green);
     }
   }
 
