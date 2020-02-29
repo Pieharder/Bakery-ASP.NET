@@ -63,7 +63,8 @@ namespace Bakery.View
           \______||__|  |__| |_______| \______||__|\__\  \______/   \______/      |__|     
         ====================================================================================                                                                                     
       ", Color.Green);
-      Console.WriteLine($"                Amount of Bread Loafs {Cart.BreadTotal}");
+
+      Console.WriteLine($"                Amount of Bread loaves = {Cart.BreadTotal}");
       Console.WriteLine("          ---------------------------------------");
       int thirdFree = 1;
       foreach (Bread item in Cart.BreadCart)
@@ -101,7 +102,7 @@ namespace Bakery.View
       Console.WriteLine();
       Console.WriteLine("          ---------------------------------------");
       Console.WriteLine("          ---------------------------------------");
-      Console.WriteLine($"                Amount of Pastries {Cart.PastryTotal}", Color.Cyan);
+      Console.WriteLine($"                Amount of Pastries = {Cart.PastryTotal}", Color.Cyan);
       Console.WriteLine("          ---------------------------------------");
       int thirdHalfOff = 1;
       foreach (Pastry item in Cart.PastryCart)
