@@ -164,29 +164,44 @@ namespace Bakery.View
       }
 
       Console.WriteLine("          -------------- [BREAD] -------------------", Color.Red);
-      //print bread
-      Console.WriteLine($"           Amount of loafs = {Cart.BreadTotal}.");
-      foreach (Bread item in Cart.BreadCart)
+      if (Cart.BreadTotal > 0)
       {
-        Console.WriteLine($"           [ (#{item.BreadCount}) {item.BreadType} ]");
+        //print bread
+        Console.WriteLine($"           Amount of loafs = {Cart.BreadTotal}.");
+        foreach (Bread item in Cart.BreadCart)
+        {
+          Console.WriteLine($"           [ (#{item.BreadCount}) {item.BreadType} ]");
 
+        }
+        Console.WriteLine($"           Total before discount =  ${Math.Round((Cart.BreadTotal * 5), 2)}", Color.Red);
+        Console.WriteLine($"           Total after discount =  ${Math.Round(Cart.GetBreadTotal(Cart.BreadTotal), 2)}", Color.Green);
       }
-      Console.WriteLine($"           Total before discount =  ${Math.Round((Cart.BreadTotal * 5), 2)}", Color.Red);
-      Console.WriteLine($"           Total after discount =  ${Math.Round(Cart.GetBreadTotal(Cart.BreadTotal), 2)}", Color.Green);
+      else
+      {
+        Console.WriteLine($"           Currently no bread is in your cart.");
+      }
 
-      //print pastry
       Console.WriteLine("          -------------- [Pastries] -------------------", Color.Cyan);
-      Console.WriteLine($"            Amont of Pastries = {Cart.PastryTotal}.");
-      foreach (Pastry item in Cart.PastryCart)
+      if (Cart.PastryTotal > 0)
       {
-        Console.WriteLine($"            [ (#{item.PastryCount}) {item.PastryType} ]");
+        //print pastry
+        Console.WriteLine($"            Amont of Pastries = {Cart.PastryTotal}.");
+        foreach (Pastry item in Cart.PastryCart)
+        {
+          Console.WriteLine($"            [ (#{item.PastryCount}) {item.PastryType} ]");
 
+        }
+        Console.WriteLine($"            Total before Discount = ${Math.Round((Cart.PastryTotal * 2), 2)}", Color.Red);
+        Console.WriteLine($"            Total after Discount = ${Math.Round(Cart.GetPastryTotal(Cart.PastryTotal), 2)}", Color.Cyan);
       }
-      Console.WriteLine($"            Total before Discount = ${Math.Round((Cart.PastryTotal * 2), 2)}", Color.Red);
-      Console.WriteLine($"            Total after Discount = ${Math.Round(Cart.GetPastryTotal(Cart.PastryTotal), 2)}", Color.Cyan);
+      else
+      {
+        Console.WriteLine($"           Currently no pastries are in your cart.");
+      }
       Console.WriteLine();
       Console.WriteLine("          -------------- [Total] -------------------", Color.Green);
-      Console.WriteLine($"            Total after Discount = ${Math.Round(Cart.GetPastryTotal(Cart.PastryTotal) + Cart.GetBreadTotal(Cart.BreadTotal), 2)}", Color.Green);
+      Console.WriteLine($"           Total after Discount = ${Math.Round(Cart.GetPastryTotal(Cart.PastryTotal) + Cart.GetBreadTotal(Cart.BreadTotal), 2)}", Color.Green);
+      Console.WriteLine("          ------------------------------------------", Color.Green);
 
     }
 
