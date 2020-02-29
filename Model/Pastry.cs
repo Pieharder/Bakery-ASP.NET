@@ -5,14 +5,21 @@ namespace Bakery.Model
 {
   class Pastry
   {
+    /////////////////////////////////////
+    //////    Properties     ///////////
     public string PastryType { get; set; }
     public int PastryCount { get; set; }
 
+    /////////////////////////////////////
+    //////    Constructor    ///////////
     Pastry(string pastryType, int count)
     {
       PastryType = pastryType;
       PastryCount = count;
     }
+
+    /////////////////////////////////////
+    //////      Methods     ////////////
     public static void Menu()
     {
       PastryMenu.Print();

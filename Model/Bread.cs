@@ -6,13 +6,21 @@ namespace Bakery.Model
 {
   class Bread
   {
+    /////////////////////////////////////
+    //////    Properties     ///////////
     public string BreadType { get; set; }
     public int BreadCount { get; set; }
+
+    /////////////////////////////////////
+    //////    Constructor   ///////////
     Bread(string type, int count)
     {
       BreadType = type;
       BreadCount = count;
     }
+
+    /////////////////////////////////////
+    //////     Methods      ////////////
     public static void Menu()
     {
       BreadMenu.Print();

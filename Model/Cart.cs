@@ -6,23 +6,28 @@ namespace Bakery.Model
 {
   class Cart
   {
+    /////////////////////////////////////////
+    ///////////   Bread Fields    ///////////
     private static List<Bread> breadCart = new List<Bread>(5);
     public static List<Bread> BreadCart
     {
       get { return breadCart; }
       set { breadCart = value; }
     }
+    public static double BreadTotal { get; set; }
+
+    /////////////////////////////////////////
+    ///////////   Pastry Fields    ///////////
     private static List<Pastry> pastryCart = new List<Pastry>(5);
     public static List<Pastry> PastryCart
     {
       get { return pastryCart; }
       set { pastryCart = value; }
     }
-
-    public static double BreadTotal { get; set; }
     public static double PastryTotal { get; set; }
 
-
+    /////////////////////////////////////
+    //////      Methods     ////////////    
     public static void Menu()
     {
 
