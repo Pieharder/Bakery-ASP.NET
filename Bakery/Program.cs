@@ -10,39 +10,19 @@ using Microsoft.Extensions.Logging;
 
 namespace Bakery
 {
-  public class Startup
+  public class Program
   {
-    public Startup(IHostingEnvironment env)
+    public static void Main(string[] args)
     {
-      var builder = new ConfigurationBuilder()
-          .SetBasePath(env.ContentRootPath)
-          .AddEnvironmentVariables();
-      Configuration = builder.Build();
-    }
+      var host = new WebHostBuilder()
+        .UseKestrel()
+        .UseContentRoot(Directory.GetCurrentDirectory())
+        .UseIISIntegration()
+        .UseStartup<Startup>()
+        .Build();
 
-    public IConfigurationRoot Configuration { get; }
-    public void ConfigureServices(IServiceCollection services)
-    {
-      services.AddMvc();
-    }
-
-    // This method gets called by the runtime. Use this method to add services to the container.
-    // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=39894
-    public void Configure(IApplicationBuilder app)
-    {
-      app.UseDeveloperExceptionPage();
-
-      app.UseMvc(routes =>
-      {
-        routes.MapRoute(
-                  name: "default",
-                  template: "{controller=Home}/{action=Index}/{id?}");
-      });
-
-      app.Run(async (context) =>
-      {
-        await context.Response.WriteAsync("This is not the page you're looking for.");
-      });
+      host.Run();
     }
   }
+
 }
